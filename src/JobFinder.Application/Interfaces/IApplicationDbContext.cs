@@ -8,6 +8,8 @@ namespace JobFinder.Application.Interfaces
     {
         DbSet<Vacancy> Vacancies { get; set; }
         DbSet<User> Users { get; set; }
+        DbSet<CandidateProfile> CandidateProfiles { get; set; }
+        DbSet<CompanyProfile> CompanyProfiles { get; set; }
 
         Task<int> SaveChangesAsync(CancellationToken cancellationToken);
     }

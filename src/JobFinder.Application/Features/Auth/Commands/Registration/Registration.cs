@@ -55,6 +55,8 @@ namespace JobFinder.Application.Features.Auth.Commands.Registration
                 UserType = request.UserType
             };
 
+            user.InitializeProfile();
+
             _context.Users.Add(user);
 
             try

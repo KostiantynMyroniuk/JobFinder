@@ -16,6 +16,8 @@ namespace JobFinder.Infrastructure.Persistence.Data
         
         public DbSet<Vacancy> Vacancies { get; set; }
         public DbSet<User> Users { get; set; }
+        public DbSet<CandidateProfile> CandidateProfiles { get; set; }
+        public DbSet<CompanyProfile> CompanyProfiles { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -25,6 +27,18 @@ namespace JobFinder.Infrastructure.Persistence.Data
             modelBuilder.Entity<User>()
                 .HasIndex(u => u.Email)
                 .IsUnique();
+
+            modelBuilder.Entity<User>()
+                .HasOne(u => u.CandidateProfile)
+                .WithOne(p => p.User)
+                .HasForeignKey<CandidateProfile>(u => u.UserId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<User>()
+                .HasOne(u => u.CompanyProfile)
+                .WithOne(p => p.User)
+                .HasForeignKey<CompanyProfile>(u => u.UserId)
+                .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }
