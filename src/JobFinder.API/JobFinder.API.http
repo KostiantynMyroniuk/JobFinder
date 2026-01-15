@@ -1,0 +1,25 @@
+@JobFinder.API_HostAddress = https://localhost:7056
+
+GET {{JobFinder.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
+
+POST {{JobFinder.API_HostAddress}}/job/vacancies
+Content-Type: application/json
+
+{
+  "name": "Middle ASP.NET Backend Developer",
+  "description": "Develop and maintain .NET applications.",
+  "workFormat": 1,
+  "location": "Lviv, Ukraine",
+  "experience": 2,                 
+  "englishLevel": 4
+}
+
+###
+
+
+GET {{JobFinder.API_HostAddress}}/job/vacancies?pageNumber=1&pageSize=5
+
+###
