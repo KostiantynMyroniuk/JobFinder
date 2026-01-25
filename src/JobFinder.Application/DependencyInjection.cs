@@ -30,7 +30,7 @@ namespace JobFinder.Application
             builder.Services.AddAutoMapper(cfg =>
             {
                 cfg.AddProfile<VacancyProfile>();
-                cfg.AddProfile<UserProfile>();
+                cfg.AddProfile<ProfileProfile>();
             });
         }
     }

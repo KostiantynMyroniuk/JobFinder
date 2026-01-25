@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using JobFinder.Application.Events;
 using JobFinder.Application.Interfaces;
 using JobFinder.Domain.Entities;
 using JobFinder.Domain.Enums;
@@ -26,15 +27,18 @@ namespace JobFinder.Application.Features.Auth.Commands.Registration
         private readonly IApplicationDbContext _context;
         private readonly IPasswordHasher _hasher;
         private readonly IJwtProvider _jwtProvider;
+        private readonly IMediator _mediator;
 
         public RegistrationCommandHandler(
             IApplicationDbContext context,
             IPasswordHasher hasher,
-            IJwtProvider jwtProvider)
+            IJwtProvider jwtProvider,
+            IMediator mediator)
         {
             _context = context;
             _hasher = hasher;
             _jwtProvider = jwtProvider;
+            _mediator = mediator;
         }
 
         public async Task<RegisterResponse> Handle(RegistrationCommand request, CancellationToken cancellationToken)
@@ -55,8 +59,6 @@ namespace JobFinder.Application.Features.Auth.Commands.Registration
                 UserType = request.UserType
             };
 
-            user.InitializeProfile();
-
             _context.Users.Add(user);
 
             try
@@ -67,7 +69,8 @@ namespace JobFinder.Application.Features.Auth.Commands.Registration
             {
                 throw new AlreadyExistsException("Account already exists.");
             }
-            
+
+            await _mediator.Publish(new UserRegisteredEvent(user.Id, user.UserType), cancellationToken);
 
             var token = _jwtProvider.GenerateToken(user);
 

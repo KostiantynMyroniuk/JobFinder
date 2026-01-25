@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using JobFinder.Application.Features.Vacancies.Commands.CreateVacancy;
-using JobFinder.Application.Features.Vacancies.Queries.GetVacancies;
+using JobFinder.Application.Features.Vacancies.Queries;
 using JobFinder.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using System;

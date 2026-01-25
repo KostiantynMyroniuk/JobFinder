@@ -1,25 +1,22 @@
 @JobFinder.API_HostAddress = https://localhost:7056
 
-GET {{JobFinder.API_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###
-
-POST {{JobFinder.API_HostAddress}}/job/vacancies
+PUT {{JobFinder.API_HostAddress}}/profile
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwMTliZjA4ZS1kMGM4LTdkM2YtODY1NC04MzFiNGRlMzE3MGIiLCJqdGkiOiI3NzliYzEzZS1hMzZiLTQ2NTEtYmM3MS00M2QxYWM3OWQ3M2QiLCJ1c2VyX3R5cGUiOiJDYW5kaWRhdGUiLCJleHAiOjE3NjkzNTYyOTEsImlzcyI6IkpvYkZpbmRlckFwaSIsImF1ZCI6IlN3YWdnZXJVc2VyIn0.KAYO0hoYsAILASNhMHqLkqtnpa652JYr9EIlVEBoS50
 Content-Type: application/json
 
 {
-  "name": "Middle ASP.NET Backend Developer",
-  "description": "Develop and maintain .NET applications.",
-  "workFormat": 1,
-  "location": "Lviv, Ukraine",
-  "experience": 2,                 
-  "englishLevel": 4
+  "firstNameAndLastName": "Олександр Повар",
+  "position": "Junior .NET Developer",
+  "salaryExpectation":800,
+  "experience": 3,
+  "workFormats": [
+    "Remote",
+    "Hybrid"
+  ],
+  "country": "Ukraine",
+  "city": "Lviv",
+  "experienceDescription": "Понад 3 роки успішного комерційного досвіду розробки високонавантажених систем на платформі .NET. Глибоко спеціалізуюсь на побудові масштабованої архітектури з використанням ASP.NET Core, Entity Framework Core та PostgreSQL. Маю практичний досвід впровадження мікросервісного підходу, налаштування API Gateways (Ocelot) та реалізації асинхронної взаємодії між сервісами через RabbitMQ та Kafka."
 }
 
 ###
 
-
-GET {{JobFinder.API_HostAddress}}/job/vacancies?pageNumber=1&pageSize=5
-
-###

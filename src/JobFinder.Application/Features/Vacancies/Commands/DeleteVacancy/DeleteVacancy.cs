@@ -24,7 +24,7 @@ namespace JobFinder.Application.Features.Vacancies.Commands.DeleteVacancy
             var vacancy = await _context.Vacancies.FindAsync(request.Id, cancellationToken);
 
             if (vacancy == null)
-                throw new KeyNotFoundException($"Vacancy with key: {request.Id} not found");
+                throw new KeyNotFoundException($"Vacancy not found.");
 
             _context.Vacancies.Remove(vacancy);
             await _context.SaveChangesAsync(cancellationToken);

@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <Folder Include="Features\Auth\Queries\" />
+    <Folder Include="Features\Profiles\Commands\UpdateCompanyProfile\" />
     <Folder Include="Features\Vacancies\Commands\UpdateVacancy\" />
   </ItemGroup>
 

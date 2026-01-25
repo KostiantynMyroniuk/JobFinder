@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace JobFinder.Application.Features.Vacancies.Queries.GetVacancies
+namespace JobFinder.Application.Features.Vacancies.Queries
 {
     public class VacancyDto
     {
